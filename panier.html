@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Panier Orinoco">
+    <meta name="author" content="Tony Roussarie">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+
+
+
+    <title>Détail du produit - Orinoco</title>
+
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><img class="logo-orinoco" src="./images/orinoco-logo.PNG" alt="logo Orinoco"></a>
+        <div class="panier">
+            <a href="panier.html">
+                <i class="fas fa-shopping-basket fa-3x"></i></a>
+        </div>
+    </header>
+
+    <main class="container">
+
+
+        <section class="container content-section">
+            <h2 class="section-header">Panier</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">Produit</span>
+                <span class="cart-lenses cart-header cart-column">Lentille</span>
+                <span class="cart-price cart-header cart-column">Prix</span>
+                <span class="cart-quantity cart-header cart-column">Quantité</span>
+            </div>
+            <div id="products" class="cart-items">
+            </div>
+            <div id="cart-total">
+                <strong id="cart-total-title">Total</strong>
+                <span id="cart-total-price">0,00 €</span>
+            </div>
+        </section>
+
+        <section id="formulaire">
+            <!-- Ajouter le formulaire -->
+        </section>
+
+        <button class="btn btn-success btn-purchase" type="button">COMMANDER</button>
+
+    </main>
+
+    <script src="https://kit.fontawesome.com/6bc9113a6b.js" crossorigin="anonymous"></script>
+    <script src="./js/panier.js"></script>
+</body>
+
+</html>
