@@ -73,6 +73,7 @@ result(url).then(function (data) {
         }
 
         localStorage.setItem('panier', JSON.stringify(panier));
+        alert('produit ajouté au panier!')
     })
 });
 
@@ -87,34 +88,3 @@ result(url).then(function (data) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-   ////////////////////////////////////////
-
-// fetch(url)
-//     .then(
-//         function (response) {
-//             return response.json()
-//                 .then(function (data) {
-//                     console.log(data);
-//                     title.innerHTML = data.name;
-//                     price.innerHTML = data.price;
-//                     description.innerHTML = data.description;
-//                     lenses.innerHTML = data.lenses;
-
-
-//                 })
-//         }
-//     )
-//     .catch(
-
-//     )
