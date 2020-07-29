@@ -211,3 +211,11 @@ form {
     font-size: 1.75em;
 }
 
+form input {
+    width: 40%;
+    margin: 15px 15px;
+}
+
+#erreur {
+    color: red;
+}

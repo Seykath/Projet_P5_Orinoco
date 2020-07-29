@@ -1,8 +1,6 @@
 
 const products = document.getElementById('products');
 const totalCart = document.getElementById('cart-total-price');
-const btnMinus = document.getElementById('moins');
-const btnPlus = document.getElementById('plus');
 const panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
 
@@ -37,7 +35,7 @@ function actionCart() {
         let button = removeCartItemButtons[i];
         button.addEventListener('click', removeCartItem)
     }
-}
+};
 
 
 // Bouton supprimer du panier
@@ -56,6 +54,25 @@ function removeCartItem(event) {
 };
 
 
+// Bouton moins 
+function minus() {
+    console.log('click sur -');
+}
+
+let btnMinus = document.getElementById('moins');
+btnMinus.addEventListener('click', minus);
+
+
+// Bouton plus 
+function plus() {
+    console.log('clic sur +');
+}
+
+let btnPlus = document.getElementById('plus')
+btnPlus.addEventListener('click', plus);
+
+
+
 // Prix total du panier
 function totalCount() {
     let total = 0;
@@ -66,6 +83,29 @@ function totalCount() {
     totalCart.textContent = total / 100 + ',00 €';
 }
 
+
+// Formulaire remplit et envoyé
+document.forms["commande"].addEventListener("submit", function (e) {
+
+
+    var erreur;
+
+    // var inputs = this;
+
+    // for (var i = 0; i < inputs.length; i++) {
+    //     if (!inputs[i].value) {
+    //         erreur = "Veuillez renseigner tout les champs";
+    //     }
+    // }
+
+    if (erreur) {
+        e.preventDefault();
+        document.getElementById('erreur').innerHTML = erreur;
+        return false;
+    } else {
+        alert('Formulaire envoyé !');
+    }
+})
 
 
 

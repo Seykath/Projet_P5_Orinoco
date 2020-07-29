@@ -48,33 +48,19 @@
             </div>
         </section>
 
-        <form id="formulaire" action="commande.html" method="POST">
+        <form name="commande" action="commande.html" method="POST">
             <h2> Formulaire de commande</h2>
-            <div>
-                <label for="name">Votre nom</label>
-                <input type="text" name="name" placeholder="Elton"
-                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}">
-            </div>
-            <div>
-                <label for="name">Votre prénom</label>
-                <input type="text" name="lastname" placeholder="John"
-                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}">
-            </div>
-            <div>
-                <label for="adresse">Votre adresse</label>
-                <input type="text" name="adresse" placeholder="1 route des écoles" pattern="[A-Za-z0-9\s]{5,}">
-            </div>
-            <div>
-                <label for="adresse">Code postal et ville</label>
-                <input type="text" name="code_postal" placeholder="16100 Cognac" pattern="[0-9]{5}[A-Za-z\s]{2,}">
-            </div>
-            <div>
-                <label for="email">Votre adresse mail</label><br>
-                <input type="email" name="email" id="email" required size="30px" placeholder="Elton-John@example.com">
-            </div>
-            <input type="submit" id="bouton-validation" class="btn-success" value="Envoyer">
+            <input type="text" name="nom" placeholder="Norris" required>
+            <input type="text" name="prenom" placeholder="Chuck" required>
+            <input type="text" name="adresse" placeholder="1 rue du cinéma" required>
+            <input type="text" name="cp" placeholder="16100" pattern="[0-9]{5}" required>
+            <input type="text" name="ville" placeholder="Cognac" required>
+            <input type="text" name="tel" placeholder="0620202020" pattern="[0-9]{10}}" required>
+            <input type=" email" name="email" placeholder="email@example.com" required>
+            <input type="submit" class="btn btn-success" name="valider" value="Envoyer">
         </form>
 
+        <p id="erreur"></p>
         <button class=" btn btn-success btn-purchase" type="button">COMMANDER</button>
 
     </main>
