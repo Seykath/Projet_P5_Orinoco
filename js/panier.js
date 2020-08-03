@@ -1,8 +1,9 @@
-
-const products = document.getElementById('products');
-const totalCart = document.getElementById('cart-total-price');
-const panier = JSON.parse(localStorage.getItem('panier'));
+let products = document.getElementById('products');
+let totalCart = document.getElementById('cart-total-price');
+let quantityInput = document.getElementsByClassName('cart-quantity-input');
+let panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
+
 
 
 
@@ -16,35 +17,68 @@ panier.forEach(element => {
         <span class="cart-lenses cart-column">${element.lenses}</span>
         <span class="cart-price cart-column">${element.price / 100},00 €</span>
         <div class="cart-quantity cart-column">
-            <input type="button" value="-" id="moins">
-            <input type="text" class="cart-quantity-input count" size="8" value="${element.quantity}">
-            <input type="button" value="+" id="plus">
+            <input type="button" value="-" cartId="${element.id}" cartLense="${element.lenses}" class="decrease">
+            <span class="cart-quantity-input">${element.quantity}</span>
+            <input type="button" value="+" cartId="${element.id}" cartLense="${element.lenses}" class="increase">
             <button id="${element.id}" class="btn btn-danger" type="button">SUPPRIMER</button>
         </div>
         </div>`;
 
-    actionCart();
-    totalCount();
-
 });
 
-// action sur le panier
-function actionCart() {
+updateQuantity();
+totalCount();
+
+
+
+function updateQuantity() {
+    let btnMinus = document.querySelectorAll(".decrease");
+    let btnPlus = document.querySelectorAll(".increase");
+    let product = localStorage.getItem('panier');
+    product = JSON.parse(product);
+
+    Array.from(btnMinus).forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const id = e.target.getAttribute('cartId');
+            const lense = e.target.getAttribute('cartLense');
+            console.log("ta cliqué sur - de l'element" + " " + id + " " + lense);
+        })
+    })
+
+    Array.from(btnPlus).forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const id = e.target.getAttribute('cartId');
+            const lense = e.target.getAttribute('cartLense');
+            console.log("ta cliqué sur + de l'element" + " " + id + " " + lense);
+
+        })
+    })
+
+}
+
+
+
+// function supprimer et tableaux des boutons
+function remove() {
     let removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (let i = 0; i < removeCartItemButtons.length; i++) {
         let button = removeCartItemButtons[i];
         button.addEventListener('click', removeCartItem)
     }
 };
+remove();
+
+
 
 
 // Bouton supprimer du panier
 function removeCartItem(event) {
     let buttonClicked = event.target
     let id = buttonClicked.getAttribute('id');
-    // get index of object with id:37
+    console.log(id);
+    // récuperer l'index de l'objet via son ID
     let removeIndex = panier.map(function (item) { return item.id; }).indexOf(id);
-    // remove object
+    // supprimer l'objet
     panier.splice(removeIndex, 1);
 
     localStorage.clear();
@@ -54,41 +88,94 @@ function removeCartItem(event) {
 };
 
 
-// Bouton moins 
-function minus() {
-    console.log('click sur -');
-}
-
-let btnMinus = document.getElementById('moins');
-btnMinus.addEventListener('click', minus);
-
-
-// Bouton plus 
-function plus() {
-    console.log('clic sur +');
-}
-
-let btnPlus = document.getElementById('plus')
-btnPlus.addEventListener('click', plus);
 
 
 
-// Prix total du panier
+// Prix total du panier;
 function totalCount() {
     let total = 0;
     for (let i in panier) {
         total += panier[i].price * panier[i].quantity;
     }
+    console.log(total);
 
     totalCart.textContent = total / 100 + ',00 €';
 }
 
 
-// Formulaire remplit et envoyé
-document.forms["commande"].addEventListener("submit", function (e) {
 
 
-    var erreur;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+
+
+
+//     let btnMinus = document.getElementById('moins');
+
+//     function minus() {
+//         let minus = document.getElement('minus');
+//         console.log('click sur -');
+//         let quantityMinus = element.quantity;
+//         console.log(quantityMinus);
+//         quantityMinus = quantityMinus - 1;
+//         minus.value = quantityMinus;
+//     }
+
+//     btnMinus.addEventListener('click', minus);
+
+// });
+
+
+
+// // action sur le panier
+// function actionCart() {
+//     let removeCartItemButtons = document.getElementsByClassName('btn-danger')
+//     for (let i = 0; i < removeCartItemButtons.length; i++) {
+//         let button = removeCartItemButtons[i];
+//         button.addEventListener('click', removeCartItem)
+//     }
+// };
+
+
+// // Bouton supprimer du panier
+// function removeCartItem(event) {
+//     let buttonClicked = event.target
+//     let id = buttonClicked.getAttribute('id');
+//     // récuperer l'index de l'objet via son ID
+//     let removeIndex = panier.map(function (item) { return item.id; }).indexOf(id);
+//     // supprimer l'objet
+//     panier.splice(removeIndex, 1);
+
+//     localStorage.clear();
+//     localStorage.setItem('panier', JSON.stringify(panier));
+//     buttonClicked.parentElement.parentElement.remove();
+//     totalCount();
+// };
+
+
+
+
+
+// // Formulaire remplit et envoyé
+// document.forms["commande"].addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     alert("formulaire validé!");
+
+    // var erreur;
 
     // var inputs = this;
 
@@ -98,14 +185,14 @@ document.forms["commande"].addEventListener("submit", function (e) {
     //     }
     // }
 
-    if (erreur) {
-        e.preventDefault();
-        document.getElementById('erreur').innerHTML = erreur;
-        return false;
-    } else {
-        alert('Formulaire envoyé !');
-    }
-})
+    // if (erreur) {
+    //     e.preventDefault();
+    //     document.getElementById('erreur').innerHTML = erreur;
+    //     return false;
+    // } else {
+    //     alert('Formulaire validé !');
+    // }
+// })
 
 
 

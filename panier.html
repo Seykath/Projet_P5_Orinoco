@@ -40,28 +40,31 @@
                 <span class="cart-price cart-header cart-column">Prix</span>
                 <span class="cart-quantity cart-header cart-column">Quantité</span>
             </div>
+
             <div id="products" class="cart-items">
             </div>
+
             <div id="cart-total">
-                <strong id="cart-total-title">Total</strong>
+                <strong id="cart-total-title">Total :</strong>
                 <span id="cart-total-price">0,00 €</span>
             </div>
         </section>
 
-        <form name="commande" action="commande.html" method="POST">
+        <form id="formulaire-contact" name="commande" action="./commande.html" method="POST">
             <h2> Formulaire de commande</h2>
-            <input type="text" name="nom" placeholder="Norris" required>
-            <input type="text" name="prenom" placeholder="Chuck" required>
-            <input type="text" name="adresse" placeholder="1 rue du cinéma" required>
-            <input type="text" name="cp" placeholder="16100" pattern="[0-9]{5}" required>
+            <input type="text" name="nom" placeholder="Norris" title="Contient uniquement des lettres" required>
+            <input type="text" name="prenom" placeholder="Chuck" title="Contient uniquement des lettres" required>
+            <input type="text" name="adresse" placeholder="1 rue du cinéma" title="contient chiffres et lettres"
+                required>
+            <input type="text" name="cp" placeholder="16100" pattern="[0-9]{5}" title="Contient uniquement chiffres"
+                required>
             <input type="text" name="ville" placeholder="Cognac" required>
-            <input type="text" name="tel" placeholder="0620202020" pattern="[0-9]{10}}" required>
             <input type=" email" name="email" placeholder="email@example.com" required>
-            <input type="submit" class="btn btn-success" name="valider" value="Envoyer">
+
+            <input type="submit" class="btn btn-success btn-purchase" name="valider" value="Valider">
         </form>
 
-        <p id="erreur"></p>
-        <button class=" btn btn-success btn-purchase" type="button">COMMANDER</button>
+        <!-- <p id="erreur"></p> -->
 
     </main>
 

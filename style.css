@@ -38,7 +38,7 @@ header {
     color: #915CF7;
 }
 
-.container h2 {
+ h2 {
     font-family: 'Indie Flower','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 60px;
@@ -165,17 +165,9 @@ form {
 }
 
 .cart-quantity-input {
-    height: 34px;
-    width: 50px;
-    border-radius: 5px;
-    border: 1px solid #56CCF2;
-    background-color: #eee;
-    color: #333;
-    padding: 0;
-    text-align: center;
-    font-size: 1.2em;
+   
     margin-right: 10px;
-     margin-left: 10px;
+    margin-left: 10px;
 }
 
 .cart-row:last-child {
@@ -202,6 +194,7 @@ form {
 #cart-total-price {
     color: #333;
     font-size: 1.1em;
+    font-weight: 600;
 }
 
 .btn-purchase {
@@ -211,6 +204,17 @@ form {
     font-size: 1.75em;
 }
 
+#formulaire-contact {
+    background-color:  #f3e9f1;
+    border-radius: 50px;
+    margin-top: 40px;
+}
+
+form h2 {
+    margin: 0;
+    padding: 20px 0;
+    
+}
 form input {
     width: 40%;
     margin: 15px 15px;
@@ -218,4 +222,9 @@ form input {
 
 #erreur {
     color: red;
+}
+
+#validation-commande {
+    background-color: #f3e9f1;
+    border-radius: 50px;
 }
