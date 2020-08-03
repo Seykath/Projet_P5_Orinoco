@@ -34,29 +34,43 @@ totalCount();
 function updateQuantity() {
     let btnMinus = document.querySelectorAll(".decrease");
     let btnPlus = document.querySelectorAll(".increase");
-    let product = localStorage.getItem('panier');
-    product = JSON.parse(product);
+    let product = JSON.parse(localStorage.getItem('panier'));
 
     Array.from(btnMinus).forEach(btn => {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
             const lense = e.target.getAttribute('cartLense');
             console.log("ta cliqué sur - de l'element" + " " + id + " " + lense);
-        })
-    })
+            product = product.map(item => {
+                if (item.id == id && item.lenses == lense && item.quantity > 1) {
+                    item.quantity -= 1;
+                    quantityInput.innerHTML = `${item.quantity}`;
+                }
+                return item;
+            });
+            localStorage.setItem('panier', JSON.stringify(product));
+            location.reload();
+        });
+    });
 
     Array.from(btnPlus).forEach(btn => {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
             const lense = e.target.getAttribute('cartLense');
             console.log("ta cliqué sur + de l'element" + " " + id + " " + lense);
-
+            product = product.map(item => {
+                if (item.id == id && item.lenses == lense && item.quantity >= 1) {
+                    item.quantity += 1;
+                    quantityInput.innerHTML = `${item.quantity}`;
+                }
+                return item;
+            });
+            localStorage.setItem('panier', JSON.stringify(product));
+            location.reload();
         })
     })
 
 }
-
-
 
 // function supprimer et tableaux des boutons
 function remove() {
@@ -106,74 +120,10 @@ function totalCount() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////
-
-
-
-//     let btnMinus = document.getElementById('moins');
-
-//     function minus() {
-//         let minus = document.getElement('minus');
-//         console.log('click sur -');
-//         let quantityMinus = element.quantity;
-//         console.log(quantityMinus);
-//         quantityMinus = quantityMinus - 1;
-//         minus.value = quantityMinus;
-//     }
-
-//     btnMinus.addEventListener('click', minus);
-
-// });
-
-
-
-// // action sur le panier
-// function actionCart() {
-//     let removeCartItemButtons = document.getElementsByClassName('btn-danger')
-//     for (let i = 0; i < removeCartItemButtons.length; i++) {
-//         let button = removeCartItemButtons[i];
-//         button.addEventListener('click', removeCartItem)
-//     }
-// };
-
-
-// // Bouton supprimer du panier
-// function removeCartItem(event) {
-//     let buttonClicked = event.target
-//     let id = buttonClicked.getAttribute('id');
-//     // récuperer l'index de l'objet via son ID
-//     let removeIndex = panier.map(function (item) { return item.id; }).indexOf(id);
-//     // supprimer l'objet
-//     panier.splice(removeIndex, 1);
-
-//     localStorage.clear();
-//     localStorage.setItem('panier', JSON.stringify(panier));
-//     buttonClicked.parentElement.parentElement.remove();
-//     totalCount();
-// };
-
-
-
-
-
-// // Formulaire remplit et envoyé
-// document.forms["commande"].addEventListener("submit", function (e) {
-//     e.preventDefault();
-//     alert("formulaire validé!");
+// Formulaire remplit et envoyé
+document.forms["commande"].addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("formulaire validé!");
 
     // var erreur;
 
@@ -192,7 +142,7 @@ function totalCount() {
     // } else {
     //     alert('Formulaire validé !');
     // }
-// })
+})
 
 
 
