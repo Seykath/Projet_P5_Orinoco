@@ -31,8 +31,9 @@
 
     <main class="container">
 
+        <div id="empty-cart"></div>
 
-        <section class="container content-section">
+        <section id="content-section" class="container">
             <h2 class="section-header">Panier</h2>
             <div class="cart-row">
                 <span class="cart-item cart-header cart-column">Produit</span>
@@ -52,16 +53,23 @@
 
         <form id="formulaire-contact" name="commande" action="./commande.html" method="POST">
             <h2> Formulaire de commande</h2>
-            <input type="text" name="nom" placeholder="Norris" title="Contient uniquement des lettres" required>
-            <input type="text" name="prenom" placeholder="Chuck" title="Contient uniquement des lettres" required>
-            <input type="text" name="adresse" placeholder="1 rue du cinéma" title="contient chiffres et lettres"
-                required>
+            <input type="text" name="nom" placeholder="Norris"
+                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
+                title="Contient uniquement des lettres" required>
+            <input type="text" name="prenom" placeholder="Chuck"
+                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
+                title="Contient uniquement des lettres" required>
+            <input type="text" name="adresse" placeholder="1 rue du cinéma"
+                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ 0-9\s]{5,}"
+                title="contient chiffres et lettres" required>
             <input type="text" name="cp" placeholder="16100" pattern="[0-9]{5}" title="Contient uniquement chiffres"
                 required>
-            <input type="text" name="ville" placeholder="Cognac" required>
+            <input type="text" name="ville" placeholder="Cognac"
+                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]{2,}" required>
             <input type=" email" name="email" placeholder="email@example.com" required>
 
-            <input type="submit" class="btn btn-success btn-purchase" name="valider" value="Valider">
+            <input type="submit" id="btn-validation" class="btn btn-success btn-purchase" name="valider"
+                value="Valider">
         </form>
 
         <!-- <p id="erreur"></p> -->

@@ -5,7 +5,14 @@ let panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
 
 
+if (panier == null || panier.length == 0) {
+    document.getElementById('content-section').style.visibility = 'hidden';
+    document.getElementById('formulaire-contact').style.visibility = 'hidden';
+    let empty = document.getElementById('empty-cart');
 
+    empty.innerHTML += `<h3 id="empty-text">Votre panier est vide...</h3>`;
+
+};
 
 panier.forEach(element => {
     console.log(element);
@@ -83,8 +90,6 @@ function remove() {
 remove();
 
 
-
-
 // Bouton supprimer du panier
 function removeCartItem(event) {
     let buttonClicked = event.target
@@ -98,10 +103,9 @@ function removeCartItem(event) {
     localStorage.clear();
     localStorage.setItem('panier', JSON.stringify(panier));
     buttonClicked.parentElement.parentElement.remove();
+    location.reload();
     totalCount();
 };
-
-
 
 
 
@@ -114,35 +118,33 @@ function totalCount() {
     console.log(total);
 
     totalCart.textContent = total / 100 + ',00 €';
+
 }
 
 
+let btnValidation = document.getElementById('btn-validation');
+
+form();
 
 
 
-// Formulaire remplit et envoyé
-document.forms["commande"].addEventListener("submit", function (e) {
-    e.preventDefault();
-    alert("formulaire validé!");
+function form() {
+    btnValidation.addEventListener('click', function () {
 
-    // var erreur;
+        document.forms["commande"].addEventListener("submit", function (e) {
+            e.preventDefault();
+            // alert("formulaire validé!");
+            let products = [];
 
-    // var inputs = this;
+            for (i = 0; i < panier.length; i++) {
+                let productId = panier[i].productId;
+                products.push(productId);
+            }
 
-    // for (var i = 0; i < inputs.length; i++) {
-    //     if (!inputs[i].value) {
-    //         erreur = "Veuillez renseigner tout les champs";
-    //     }
-    // }
+        })
+    });
+};
 
-    // if (erreur) {
-    //     e.preventDefault();
-    //     document.getElementById('erreur').innerHTML = erreur;
-    //     return false;
-    // } else {
-    //     alert('Formulaire validé !');
-    // }
-})
 
 
 

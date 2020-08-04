@@ -228,3 +228,11 @@ form input {
     background-color: #f3e9f1;
     border-radius: 50px;
 }
+
+#empty-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top : 150px;
+    font-size: 45px;
+}
