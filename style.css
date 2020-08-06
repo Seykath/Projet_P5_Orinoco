@@ -28,6 +28,7 @@ header {
 
 .fa-shopping-basket {
     color: #915CF7;
+    font-size: 40px;
 }
 .card-title a {
     text-decoration: none;
@@ -240,4 +241,54 @@ form input {
     align-items: center;
     margin-top : 150px;
     font-size: 45px;
+}
+
+
+
+
+
+/* Responsive */
+@media screen and (min-width: 800px ) {
+    .card {
+        width: 100%;
+    }
+    .product-card {
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 799px ) {
+    .card {
+        width: 100%;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+
+    .logo-orinoco {
+        width: 200px;
+        height: auto;
+    }
+
+    .fa-shopping-basket{
+        font-size: 30px;
+    }
+
+    .container {
+        padding: 0;
+        }
+
+    .card {
+        width: 95%;
+    }
+
+    h2 {
+    margin: 20px 0;
+    }
+
+    .cart-column {
+        margin-right: 0px;
+    }
 }

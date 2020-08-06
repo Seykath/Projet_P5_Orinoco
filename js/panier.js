@@ -25,7 +25,7 @@ panier.forEach(element => {
             <span class="cart-item-name">${element.name}</span>
         </div>
         <span class="cart-lenses cart-column">${element.lenses}</span>
-        <span class="cart-price cart-column">${element.price / 100},00 €</span>
+        <span class="cart-price cart-column">${element.price * element.quantity / 100},00 €</span>
         <div class="cart-quantity cart-column">
             <input type="button" value="-" cartId="${element.id}" cartLense="${element.lenses}" class="decrease">
             <span class="cart-quantity-input">${element.quantity}</span>

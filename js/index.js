@@ -17,17 +17,18 @@ getCamera(url).then(cameras => {
     cameras.forEach(camera => {
         console.log(camera)
         cameraList.innerHTML += '<div class="col-lg-4 col-md-6 mb-4">\
-                        <div class="card w-80" >\
-                                <a href="#"><img class="card-img-top" src="'+ camera.imageUrl + '"></a>\
+                        <div class="card" >\
+                                <a href="products.html?id='+ camera._id + '"><img class="card-img-top" src="' + camera.imageUrl + '"></a>\
                                 <div class="card-body text-center">\
                                     <h3 class="card-title">\
                                         <a href="products.html?id='+ camera._id + '">' + camera.name + '</a>\
                                     </h3>\
                                     <h4 class="price"> '+ camera.price + ' €' + '</h4>\
                                     <p class="card-text">' + camera.description + '</p>\
-                                </div>\
-                            </div>\
-                    </div >'
+                                    <a href="products.html?id='+ camera._id + '"><button type"button" class="btn btn-success">Détails</button></a>\
+                                </div >\
+                            </div >\
+                    </div > '
     });
 
 
