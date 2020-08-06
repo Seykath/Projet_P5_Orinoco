@@ -204,7 +204,7 @@ form {
     font-size: 1.75em;
 }
 
-#formulaire-contact {
+#formulaire-validation {
     background-color:  #f3e9f1;
     border-radius: 50px;
     margin-top: 40px;
@@ -225,6 +225,11 @@ form input {
 }
 
 #validation-commande {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
     background-color: #f3e9f1;
     border-radius: 50px;
 }

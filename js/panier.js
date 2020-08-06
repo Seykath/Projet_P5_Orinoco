@@ -1,13 +1,16 @@
+
+
 let products = document.getElementById('products');
 let totalCart = document.getElementById('cart-total-price');
 let quantityInput = document.getElementsByClassName('cart-quantity-input');
+let total = 0;
 let panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
 
 
 if (panier == null || panier.length == 0) {
     document.getElementById('content-section').style.visibility = 'hidden';
-    document.getElementById('formulaire-contact').style.visibility = 'hidden';
+    document.getElementById('formulaire-validation').style.visibility = 'hidden';
     let empty = document.getElementById('empty-cart');
 
     empty.innerHTML += `<h3 id="empty-text">Votre panier est vide...</h3>`;
@@ -111,38 +114,72 @@ function removeCartItem(event) {
 
 // Prix total du panier;
 function totalCount() {
-    let total = 0;
     for (let i in panier) {
         total += panier[i].price * panier[i].quantity;
     }
     console.log(total);
 
     totalCart.textContent = total / 100 + ',00 €';
-
 }
 
 
-let btnValidation = document.getElementById('btn-validation');
+
+const url = 'http://localhost:3000/api/cameras/order';
 
 form();
 
+function sendData(url, order) {
 
+    fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify(order)
+
+    }).then(function (response) {
+        return response.json();
+
+    }).then(function (data) {
+        localStorage.setItem('commande', JSON.stringify(data));
+        document.location = '../commande.html';
+        alert('Commande Validée !')
+
+    }).catch(function (error) {
+        console.log("Erreur", error);
+    })
+};
 
 function form() {
-    btnValidation.addEventListener('click', function () {
 
-        document.forms["commande"].addEventListener("submit", function (e) {
-            e.preventDefault();
-            // alert("formulaire validé!");
-            let products = [];
+    document.forms["commande"].addEventListener("submit", function (e) {
+        e.preventDefault();
 
-            for (i = 0; i < panier.length; i++) {
-                let productId = panier[i].productId;
-                products.push(productId);
-            }
+        let products = [];
 
-        })
-    });
+        for (i = 0; i < panier.length; i++) {
+            let productId = panier[i].id;
+            products.push(productId);
+        }
+
+        let valueForm = new FormData(document.getElementById('formulaire-validation'));
+        let contact = {
+            firstName: valueForm.get('firstName'),
+            lastName: valueForm.get('lastName'),
+            address: valueForm.get('address'),
+            zip: valueForm.get('zip'),
+            city: valueForm.get('city'),
+            email: valueForm.get('email'),
+        };
+        console.log(contact); // récupération des informations du formulaire sous forme d'objet
+        console.log(products); // récupération des Id des différents produits sous forme de tableau
+
+        const cart = { contact, products };
+        console.log('cart', cart); // lecture de la paire clé/valeurs dans la console.
+        sendData(url, cart);
+        console.log(url, cart);
+    })
+
 };
 
 
