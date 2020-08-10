@@ -152,6 +152,17 @@ function sendData(url, order) {
 
 function form() {
 
+    // if (panier == null || panier.length == 0) {
+
+    //     let disableBtn = document.querySelector('#btn-validation');
+    //     disableBtn.setAttribute('disable', "");
+
+    // } else {
+
+    //     let disableBtn = document.querySelector('#btn-validation');
+    //     disableBtn.removeAttribute('disable', "");
+
+
     document.forms["commande"].addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -179,7 +190,6 @@ function form() {
         sendData(url, cart);
         console.log(url, cart);
     })
-
 };
 
 
