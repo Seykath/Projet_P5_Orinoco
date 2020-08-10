@@ -306,4 +306,9 @@ form input {
     .cart-product {
         justify-content: space-between;
     }
+
+    form input {
+       width: 80%;
+       margin: 15px  auto;
+    }
 }
