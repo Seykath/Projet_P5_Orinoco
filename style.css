@@ -92,11 +92,16 @@ form {
 
 /* ----------  Page Panier ---------- */
 
-
+#content-section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
 
 #products {
     display: flex;
     flex-wrap: wrap;
+    margin: 10px 0;
 }
 
 .cart-header {
@@ -106,54 +111,54 @@ form {
 }
 .cart-product {
     display: flex;
+    justify-content: center;
     width: 100%;
     flex-wrap: wrap;
 }
 .cart-column {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
-    margin-right: 1.5em;
     padding-bottom: 10px;
     margin-top: 10px;
 }
 
 .cart-row {
     display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
 }
 
 .cart-item {
-    width: 30%;
+    justify-content: center;
+    width: 20%;
 }
 
 .cart-lenses {
+    justify-content: center;
     width: 20%;
 }
 
 .cart-price {
-    width: 15%;
-    font-size: 1.2em;
+    justify-content: center;
+    width: 18%;
     color: #333;
 }
 
 .cart-quantity {
-    width: 25%;
+    justify-content: center;
+    width: 37%;
 }
 
 .cart-item-name {
     color: #333;
     margin-left: .5em;
-    font-size: 1.2em;
-}
-
-.cart-item-image {
-    width: 75px;
-    height: auto;
-    border-radius: 10px;
 }
 
 .btn-danger {
-    width: 45%;
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    margin: 0 10px;
     color: white;
     background-color: #EB5757;
     border: none;
@@ -167,22 +172,22 @@ form {
 
 .cart-quantity-input {
    
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
-.cart-row:last-child {
+/* .cart-row:last-child {
     border-bottom: 1px solid black;
 }
 
 .cart-row:last-child .cart-column {
     border: none;
-}
+} */
 
 #cart-total {
     text-align: end;
-    margin-top: 10px;
     margin-right: 10px;
+    border-top: 1px solid black;
 }
 
 #cart-total-title {
@@ -190,6 +195,7 @@ form {
     font-size: 1.5em;
     color: black;
     margin-right: 20px;
+    
 }
 
 #cart-total-price {
@@ -202,7 +208,7 @@ form {
     display: block;
     width: 30%;
     margin: 40px auto 80px auto;
-    font-size: 1.75em;
+    font-size: 1.5em;
 }
 
 #formulaire-validation {
@@ -258,6 +264,10 @@ form input {
 }
 
 @media screen and (max-width: 799px ) {
+    body {
+        font-size: 0.8em;
+    }
+
     .card {
         width: 100%;
     }
@@ -282,6 +292,7 @@ form input {
 
     .card {
         width: 95%;
+        margin: 20px 5px;
     }
 
     h2 {
@@ -290,5 +301,9 @@ form input {
 
     .cart-column {
         margin-right: 0px;
+    }
+
+    .cart-product {
+        justify-content: space-between;
     }
 }

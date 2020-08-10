@@ -30,7 +30,7 @@ panier.forEach(element => {
             <input type="button" value="-" cartId="${element.id}" cartLense="${element.lenses}" class="decrease">
             <span class="cart-quantity-input">${element.quantity}</span>
             <input type="button" value="+" cartId="${element.id}" cartLense="${element.lenses}" class="increase">
-            <button id="${element.id}" class="btn btn-danger" type="button">SUPPRIMER</button>
+            <button id="${element.id}" class="btn btn-danger btn-X" type="button">X</button>
         </div>
         </div>`;
 

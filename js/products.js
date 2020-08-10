@@ -30,7 +30,7 @@ result(url).then(function (data) {
 
     image.innerHTML = `<img id="product__img" src="${camera.imageUrl}" alt="Photo de ${camera.name}" >`
     title.innerHTML = camera.name;
-    price.innerHTML = camera.price + ' €';
+    price.innerHTML = [camera.price / 100] + ',00 €';
     description.innerHTML = camera.description;
 
     lenses = camera.lenses;
