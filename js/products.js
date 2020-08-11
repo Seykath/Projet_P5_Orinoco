@@ -24,8 +24,7 @@ async function result(url) {
     return result.json()
 }
 
-result(url).then(function (data) {
-    camera = data;
+result(url).then(function (camera) {
     console.log(camera)
 
     image.innerHTML = `<img id="product__img" src="${camera.imageUrl}" alt="Photo de ${camera.name}" >`
