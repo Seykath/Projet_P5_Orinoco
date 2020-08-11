@@ -50,7 +50,7 @@ function updateQuantity() {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
             const lense = e.target.getAttribute('cartLense');
-            console.log("ta cliqué sur - de l'element" + " " + id + " " + lense);
+
             product = product.map(item => {
                 if (item.id == id && item.lenses == lense && item.quantity > 1) {
                     item.quantity -= 1;
@@ -67,7 +67,6 @@ function updateQuantity() {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
             const lense = e.target.getAttribute('cartLense');
-            console.log("ta cliqué sur + de l'element" + " " + id + " " + lense);
             product = product.map(item => {
                 if (item.id == id && item.lenses == lense && item.quantity >= 1) {
                     item.quantity += 1;
