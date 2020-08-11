@@ -8,14 +8,14 @@ let panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
 
 
-if (panier == null || panier.length == 0) {
-    document.getElementById('content-section').style.visibility = 'hidden';
-    document.getElementById('formulaire-validation').style.visibility = 'hidden';
-    let empty = document.getElementById('empty-cart');
+// if (panier == null || panier.length == 0) {
+//     document.getElementById('content-section').style.visibility = 'hidden';
+//     document.getElementById('formulaire-validation').style.visibility = 'hidden';
+//     let empty = document.getElementById('empty-cart');
 
-    empty.innerHTML += `<h3 id="empty-text">Votre panier est vide...</h3>`;
+//     empty.innerHTML += `<h3 id="empty-text">Votre panier est vide...</h3>`;
 
-};
+// };
 
 panier.forEach(element => {
     console.log(element);
@@ -143,7 +143,7 @@ function sendData(url, order) {
     }).then(function (data) {
         localStorage.setItem('commande', JSON.stringify(data));
         document.location = '../commande.html';
-        alert('Commande Validée !')
+        alert('Votre commande à bien été validée !')
 
     }).catch(function (error) {
         console.log("Erreur", error);
@@ -152,46 +152,46 @@ function sendData(url, order) {
 
 function form() {
 
-    // if (panier == null || panier.length == 0) {
+    if (panier == null || panier.length == 0) {
 
-    //     let disableBtn = document.querySelector('#btn-validation');
-    //     disableBtn.setAttribute('disable', "");
+        let disableBtn = document.querySelector('#btn-validation');
+        disableBtn.setAttribute('disabled', "");
 
-    // } else {
+    } else {
 
-    //     let disableBtn = document.querySelector('#btn-validation');
-    //     disableBtn.removeAttribute('disable', "");
+        let disableBtn = document.querySelector('#btn-validation');
+        disableBtn.removeAttribute('disabled', "");
 
 
-    document.forms["commande"].addEventListener("submit", function (e) {
-        e.preventDefault();
+        document.forms["commande"].addEventListener("submit", function (e) {
+            e.preventDefault();
 
-        let products = [];
+            let products = [];
 
-        for (i = 0; i < panier.length; i++) {
-            let productId = panier[i].id;
-            products.push(productId);
-        }
+            for (i = 0; i < panier.length; i++) {
+                let productId = panier[i].id;
+                products.push(productId);
+            }
 
-        let valueForm = new FormData(document.getElementById('formulaire-validation'));
-        let contact = {
-            firstName: valueForm.get('firstName'),
-            lastName: valueForm.get('lastName'),
-            address: valueForm.get('address'),
-            zip: valueForm.get('zip'),
-            city: valueForm.get('city'),
-            email: valueForm.get('email'),
-        };
-        console.log(contact); // récupération des informations du formulaire sous forme d'objet
-        console.log(products); // récupération des Id des différents produits sous forme de tableau
+            let valueForm = new FormData(document.getElementById('formulaire-validation'));
+            let contact = {
+                firstName: valueForm.get('firstName'),
+                lastName: valueForm.get('lastName'),
+                address: valueForm.get('address'),
+                zip: valueForm.get('zip'),
+                city: valueForm.get('city'),
+                email: valueForm.get('email'),
+            };
+            console.log(contact); // récupération des informations du formulaire sous forme d'objet
+            console.log(products); // récupération des Id des différents produits sous forme de tableau
 
-        const cart = { contact, products };
-        console.log('cart', cart); // lecture de la paire clé/valeurs dans la console.
-        sendData(url, cart);
-        console.log(url, cart);
-    })
+            const cart = { contact, products };
+            console.log('cart', cart); // lecture de la paire clé/valeurs dans la console.
+            sendData(url, cart);
+            console.log(url, cart);
+        })
+    };
 };
-
 
 
 

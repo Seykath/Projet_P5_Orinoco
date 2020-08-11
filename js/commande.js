@@ -19,3 +19,5 @@ for (i = 0; i < totalPrice.length; i++) {
 console.log(total);
 
 totalOrder.innerHTML += `<strong> ${total / 100},00 € </strong>`;
+
+localStorage.clear();
