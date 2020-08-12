@@ -1,11 +1,14 @@
-// variables
+//  Récupère les Id des balises HTML.
 const image = document.getElementById('product__img');
 const title = document.getElementById('product__title');
 const price = document.getElementById('product__price');
 const description = document.getElementById('product__description');
 const selectLenses = document.getElementById('product__lenses');
+
+// Récupère l'Id du button
 const addPanier = document.getElementById('add-panier');
 
+// Récupération de l'id du produit
 const queryString = window.location.search;
 const cameraId = new URLSearchParams(queryString).get('id');
 console.log(cameraId);
@@ -13,25 +16,23 @@ const url = "http://localhost:3000/api/cameras/" + cameraId;
 var isPresent = false;
 
 
-
-
-////////////////////////////////////////
-
-// fetch
-
+// Connexion avec les produits du server via l'URL
 async function result(url) {
     let result = await fetch(url)
     return result.json()
 }
 
+// Récupération des produits du server
 result(url).then(function (camera) {
     console.log(camera)
-
+    // remplit les champs html par les informations du produit
     image.innerHTML = `<img id="product__img" src="${camera.imageUrl}" alt="Photo de ${camera.name}" >`
     title.innerHTML = camera.name;
     price.innerHTML = [camera.price / 100] + ',00 €';
     description.innerHTML = camera.description;
 
+
+    // Ajoute les différentes lentilles au tableau selecteur et permet de récupérer la sélection via le bouton
     lenses = camera.lenses;
     lensesOptions = document.getElementById('lenses-options')
 
@@ -41,6 +42,8 @@ result(url).then(function (camera) {
 
     selectLenses.innerHTML += lensesOptions
 
+
+    // Bouton ajout au panier lors du clique
     addPanier.addEventListener('click', e => {
         e.preventDefault();
         let productLenses = selectLenses.options[selectLenses.selectedIndex].value;
@@ -64,7 +67,6 @@ result(url).then(function (camera) {
                     isPresent = true;
                 }
             });
-            console.log(panier);
 
         }
         if (isPresent == false) {

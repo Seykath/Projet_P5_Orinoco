@@ -13,8 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@600&display=swap"
         rel="stylesheet">
 
-
-
     <title>Détail du produit - Orinoco</title>
 
 </head>
@@ -35,6 +33,8 @@
 
         <section id="content-section">
             <h2 class="section-header">Panier</h2>
+
+            <!-- En-tête du panier -->
             <div class="cart-row">
                 <span class="cart-item cart-header cart-column">Produit</span>
                 <span class="cart-lenses cart-header cart-column">Lentille</span>
@@ -42,15 +42,18 @@
                 <span class="cart-quantity cart-header cart-column">Quantité</span>
             </div>
 
+            <!-- Ligne de chaque article dans le panier -->
             <div id="products" class="cart-items">
             </div>
 
+            <!-- Prix total du panier  -->
             <div id="cart-total">
                 <strong id="cart-total-title">Total :</strong>
                 <span id="cart-total-price">0,00 €</span>
             </div>
         </section>
 
+        <!-- Formulaire de validation client -->
         <form id="formulaire-validation" name="commande" action="commande.html" method="POST">
             <h2> Formulaire de commande</h2>
             <input type="text" name="firstName" placeholder="Norris"
@@ -78,8 +81,6 @@
             <input type="submit" id="btn-validation" class="btn btn-success btn-purchase" name="valider"
                 value="Valider">
         </form>
-
-        <!-- <p id="erreur"></p> -->
 
     </main>
 

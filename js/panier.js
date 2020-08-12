@@ -8,15 +8,6 @@ let panier = JSON.parse(localStorage.getItem('panier'));
 console.log(panier);
 
 
-// if (panier == null || panier.length == 0) {
-//     document.getElementById('content-section').style.visibility = 'hidden';
-//     document.getElementById('formulaire-validation').style.visibility = 'hidden';
-//     let empty = document.getElementById('empty-cart');
-
-//     empty.innerHTML += `<h3 id="empty-text">Votre panier est vide...</h3>`;
-
-// };
-
 panier.forEach(element => {
     console.log(element);
 
@@ -40,12 +31,14 @@ updateQuantity();
 totalCount();
 
 
-
+// function de mise à jour de la quantité
 function updateQuantity() {
     let btnMinus = document.querySelectorAll(".decrease");
     let btnPlus = document.querySelectorAll(".increase");
     let product = JSON.parse(localStorage.getItem('panier'));
 
+
+    // diminution de la quantité via le bouton ' - '
     Array.from(btnMinus).forEach(btn => {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
@@ -63,6 +56,8 @@ function updateQuantity() {
         });
     });
 
+
+    // augmentation de la quantité via le bouton ' + '
     Array.from(btnPlus).forEach(btn => {
         btn.addEventListener('click', function (e) {
             const id = e.target.getAttribute('cartId');
@@ -81,7 +76,8 @@ function updateQuantity() {
 
 }
 
-// function supprimer et tableaux des boutons
+
+// tableau des boutons ' X ' + appel de la function de suppression du produit lors de l'activation du bouton
 function remove() {
     let removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (let i = 0; i < removeCartItemButtons.length; i++) {
@@ -92,13 +88,15 @@ function remove() {
 remove();
 
 
-// Bouton supprimer du panier
+//  function de suppression sur l'élement cliqué
 function removeCartItem(event) {
     let buttonClicked = event.target
     let id = buttonClicked.getAttribute('id');
     console.log(id);
+
     // récuperer l'index de l'objet via son ID
     let removeIndex = panier.map(function (item) { return item.id; }).indexOf(id);
+
     // supprimer l'objet
     panier.splice(removeIndex, 1);
 
@@ -127,6 +125,8 @@ const url = 'http://localhost:3000/api/cameras/order';
 
 form();
 
+
+// Fonction envoie de données au serveur 
 function sendData(url, order) {
 
     fetch(url, {
@@ -149,6 +149,7 @@ function sendData(url, order) {
     })
 };
 
+// Fonction du formulaire et informations récupérées
 function form() {
 
     if (panier == null || panier.length == 0) {
