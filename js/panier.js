@@ -1,5 +1,4 @@
 
-
 let products = document.getElementById('products');
 let totalCart = document.getElementById('cart-total-price');
 let quantityInput = document.getElementsByClassName('cart-quantity-input');
@@ -149,6 +148,7 @@ function sendData(url, order) {
     })
 };
 
+
 // Fonction du formulaire et informations récupérées
 function form() {
 
@@ -186,7 +186,7 @@ function form() {
             console.log(products); // récupération des Id des différents produits sous forme de tableau
 
             const cart = { contact, products };
-            console.log('cart', cart); // lecture de la paire clé/valeurs dans la console.
+
             sendData(url, cart);
             console.log(url, cart);
         })
