@@ -122,32 +122,6 @@ function totalCount() {
 
 const url = 'http://localhost:3000/api/cameras/order';
 
-form();
-
-
-// Fonction envoie de données au serveur 
-function sendData(url, order) {
-
-    fetch(url, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-        },
-        body: JSON.stringify(order)
-
-    }).then(function (response) {
-        return response.json();
-
-    }).then(function (data) {
-        localStorage.setItem('commande', JSON.stringify(data));
-        document.location = '../commande.html';
-        alert('Votre commande à bien été validée !')
-
-    }).catch(function (error) {
-        console.log("Erreur", error);
-    })
-};
-
 
 // Fonction du formulaire et informations récupérées
 function form() {
@@ -192,6 +166,35 @@ function form() {
         })
     };
 };
+
+
+form();
+
+
+// Fonction envoie de données au serveur 
+function sendData(url, order) {
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify(order)
+
+    }).then(function (response) {
+        return response.json();
+
+    }).then(function (data) {
+        localStorage.setItem('commande', JSON.stringify(data));
+        document.location = '../commande.html';
+        alert('Votre commande à bien été validée !')
+
+    }).catch(function (error) {
+        console.log("Erreur", error);
+    })
+};
+
+
 
 
 
