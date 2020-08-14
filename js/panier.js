@@ -99,7 +99,6 @@ function removeCartItem(event) {
     // supprimer l'objet
     panier.splice(removeIndex, 1);
 
-    localStorage.clear();
     localStorage.setItem('panier', JSON.stringify(panier));
     buttonClicked.parentElement.parentElement.remove();
     location.reload();
