@@ -17,13 +17,13 @@ var isPresent = false;
 
 
 // Connexion avec les produits du server via l'URL
-async function result(url) {
+async function productCamera(url) {
     let result = await fetch(url)
     return result.json()
 }
 
 // Récupération des produits du server
-result(url).then(function (camera) {
+productCamera(url).then(function (camera) {
     console.log(camera)
     // remplit les champs html par les informations du produit
     image.innerHTML = `<img id="product__img" src="${camera.imageUrl}" alt="Photo de ${camera.name}" >`
@@ -76,8 +76,12 @@ result(url).then(function (camera) {
         localStorage.setItem('panier', JSON.stringify(panier));
         alert('produit ajouté au panier!')
     })
-});
+})
 
+    .catch(function (error) {
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error);
+        alert('La connexion au serveur a échouée !');
+    });
 
 
 

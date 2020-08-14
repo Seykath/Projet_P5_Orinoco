@@ -146,23 +146,33 @@ function form() {
                 products.push(productId);
             }
 
+            // RegExp pour la validation via JS.
             let valueForm = new FormData(document.getElementById('formulaire-validation'));
-            let contact = {
-                firstName: valueForm.get('firstName'),
-                lastName: valueForm.get('lastName'),
-                address: valueForm.get('address'),
-                zip: valueForm.get('zip'),
-                city: valueForm.get('city'),
-                email: valueForm.get('email'),
-            };
-            console.log(contact); // récupération des informations du formulaire sous forme d'objet
-            console.log(products); // récupération des Id des différents produits sous forme de tableau
+            let nameFormat = new RegExp(/^[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}/);
+            let addressFormat = new RegExp(/[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ 0-9\s]{5,}/);
+            let zipFormat = new RegExp(/[0-9]{5}/);
+            let cityFormat = new RegExp(/[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]{2,}/);
 
-            const cart = { contact, products };
+            if (nameFormat.test(valueForm.get("firstName")) && nameFormat.test(valueForm.get('lastName')) && addressFormat.test(valueForm.get('address')) && zipFormat.test(valueForm.get('zip')) && cityFormat.test(valueForm.get('city'))) {
 
-            sendData(url, cart);
-            console.log(url, cart);
+                let contact = {
+                    firstName: valueForm.get('firstName'),
+                    lastName: valueForm.get('lastName'),
+                    address: valueForm.get('address'),
+                    zip: valueForm.get('zip'),
+                    city: valueForm.get('city'),
+                    email: valueForm.get('email'),
+                };
+                console.log(contact); // récupération des informations du formulaire sous forme d'objet
+                console.log(products); // récupération des Id des différents produits sous forme de tableau
+
+                const cart = { contact, products };
+
+                sendData(url, cart);
+                console.log(url, cart);
+            }
         })
+
     };
 };
 
