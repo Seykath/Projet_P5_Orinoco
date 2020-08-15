@@ -139,6 +139,7 @@ function form() {
         document.forms["commande"].addEventListener("submit", function (e) {
             e.preventDefault();
 
+
             let products = [];
 
             for (i = 0; i < panier.length; i++) {
@@ -152,8 +153,15 @@ function form() {
             let addressFormat = new RegExp(/[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ 0-9\s]{5,}/);
             let zipFormat = new RegExp(/[0-9]{5}/);
             let cityFormat = new RegExp(/[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]{2,}/);
+            let emailFormat = new RegExp(/[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/);
+            var error_message = document.getElementById("error-message");
+            var text;
 
-            if (nameFormat.test(valueForm.get("firstName")) && nameFormat.test(valueForm.get('lastName')) && addressFormat.test(valueForm.get('address')) && zipFormat.test(valueForm.get('zip')) && cityFormat.test(valueForm.get('city'))) {
+            if (nameFormat.test(valueForm.get("firstName")) && nameFormat.test(valueForm.get('lastName')) && addressFormat.test(valueForm.get('address')) && zipFormat.test(valueForm.get('zip')) && cityFormat.test(valueForm.get('city')) && emailFormat.test(valueForm.get('email'))) {
+
+                // si le formulaire est bien renseigné pas de message d'erreur
+                text = "";
+                error_message.innerHTML = text;
 
                 let contact = {
                     firstName: valueForm.get('firstName'),
@@ -170,10 +178,30 @@ function form() {
 
                 sendData(url, cart);
                 console.log(url, cart);
-            }
-        })
 
+                // Si un champ du formulaire est mal renseigné, renvoi d'un message d'erreur
+            } else if (nameFormat.test(valueForm.get("firstName")) == false) {
+                text = "Merci d'entrer un prénom valide";
+                error_message.innerHTML = text;
+            } else if (nameFormat.test(valueForm.get("lastName")) == false) {
+                text = "Merci d'entrer un nom valide";
+                error_message.innerHTML = text;
+            } else if (addressFormat.test(valueForm.get('address')) == false) {
+                text = "Merci d'entrer une adresse valide";
+                error_message.innerHTML = text;
+            } else if (zipFormat.test(valueForm.get('zip')) == false) {
+                text = "Merci d'entrer un code postal valide";
+                error_message.innerHTML = text;
+            } else if (cityFormat.test(valueForm.get('city')) == false) {
+                text = "Merci d'entrer un nom de ville valide";
+                error_message.innerHTML = text;
+            } else if (emailFormat.test(valueForm.get('email')) == false) {
+                text = "Merci d'entrer une adresse valide";
+                error_message.innerHTML = text;
+            }
+        });
     };
+
 };
 
 

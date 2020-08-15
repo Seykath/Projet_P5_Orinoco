@@ -54,30 +54,49 @@
         <!-- Formulaire de validation client -->
         <form id="formulaire-validation" name="commande" action="commande.html" method="POST">
             <h2> Formulaire de commande</h2>
-            <input type="text" name="firstName" placeholder="Norris"
-                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
-                title="Contient uniquement des lettres" required>
+            <div class="form-group">
+                <input type="text" name="firstName" placeholder="Norris"
+                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
+                    title="Contient uniquement des lettres">
+            </div>
 
-            <input type="text" name="lastName" placeholder="Chuck"
-                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
-                title="Contient uniquement des lettres" required>
+            <div class="form-group">
+                <input type="text" name="lastName" placeholder="Chuck"
+                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}"
+                    title="Contient uniquement des lettres">
+            </div>
 
-            <input type="text" name="address" placeholder="1 rue du cinéma"
-                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ 0-9\s]{5,}"
-                title="contient chiffres et lettres" required>
+            <div class="form-group">
+                <input type="text" name="address" placeholder="1 rue du cinéma"
+                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ 0-9\s]{5,}"
+                    title="contient chiffres et lettres">
+            </div>
 
-            <input type="text" name="zip" placeholder="16100" pattern="[0-9]{5}" title="Contient uniquement chiffres"
-                required>
+            <div class="form-group">
+                <input type="text" name="zip" placeholder="16100" pattern="[0-9]{5}"
+                    title="Contient uniquement chiffres">
+            </div>
 
-            <input type="text" name="city" placeholder="Cognac"
-                pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]{2,}"
-                title="Contient uniquement des lettres" required>
+            <div class="form-group">
+                <input type="text" name="city" placeholder="Cognac"
+                    pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s]{2,}"
+                    title="Contient uniquement des lettres">
+            </div>
 
-            <input type="email" name="email" placeholder="email@example.com"
-                title="Rentrer une adresse mail valide exemple: email@example.com" required>
+            <div class="form-group">
+                <input type="text" name="email" placeholder="email@example.com"
+                    pattern="[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$"
+                    title="Rentrer une adresse mail valide exemple: email@example.com">
+            </div>
 
-            <input type="submit" id="btn-validation" class="btn btn-success btn-purchase" name="valider"
-                value="Valider">
+            <div id="error-message">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="btn-validation" class="btn btn-success btn-purchase" name="valider"
+                    value="Valider">
+            </div>
+
         </form>
 
     </main>

@@ -176,14 +176,6 @@ form {
     margin-left: 5px;
 }
 
-/* .cart-row:last-child {
-    border-bottom: 1px solid black;
-}
-
-.cart-row:last-child .cart-column {
-    border: none;
-} */
-
 #cart-total {
     text-align: end;
     margin-right: 10px;
@@ -222,12 +214,21 @@ form h2 {
     padding: 20px 0;
     
 }
-form input {
-    width: 40%;
+
+.form-group {
     margin: 15px 15px;
 }
 
-#erreur {
+form input {
+    width: 40%;
+}
+
+#error-message {
+    font-size: 20px;
+    font-weight: bold;
+    width: 40%;
+    padding: 10px;
+    margin: auto;
     color: red;
 }
 
